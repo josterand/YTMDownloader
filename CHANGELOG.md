@@ -9,3 +9,8 @@
 - App window now cannot be resized for UI consistency
 - UI fixes
 - Code fixing & cleaning
+
+## Version 2.0.0
+- Full code rewrite []
+- Code fixing & cleaning []
+- 
