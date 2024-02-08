@@ -11,6 +11,5 @@
 - Code fixing & cleaning
 
 ## Version 2.0.0
-- Full code rewrite []
-- Code fixing & cleaning []
-- 
+- Full code rewrite. Now the code is class-structured
+- Code fixing & cleaning
