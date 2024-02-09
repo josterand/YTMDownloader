@@ -10,7 +10,7 @@ APP_ACCENT_COLOR = "#006191" # Blue
 # Light & Dark Colors
 RED_COLORS = ["#FF0000", "#FF5D5D"]
 GREEN_COLORS = ["#08A300", "#61FF58"]
-YTM_LINK = "https://music.youtube.com/watch?"
+YTM_LINK = "https://music.youtube.com/watch?v="
 
 class App(customtkinter.CTk):
     def __init__(self):
