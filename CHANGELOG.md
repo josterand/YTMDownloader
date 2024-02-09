@@ -23,3 +23,6 @@
 
 ## Version 2.2.0
 - App now will download the .mp3 file instead of audio-only .mp4 file
+
+## Version 2.2.1
+- Minor string fixing & styling
