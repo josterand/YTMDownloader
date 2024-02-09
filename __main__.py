@@ -4,7 +4,7 @@ from pytube import YouTube
 from pytube import exceptions
 from urllib import error
 
-APP_VERSION = "v3.0.0"
+APP_VERSION = "v2.2.0"
 APP_ACCENT_COLOR = "#006191" # Blue
 
 # Light & Dark Colors
