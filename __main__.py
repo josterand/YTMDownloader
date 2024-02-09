@@ -17,7 +17,7 @@ class App(customtkinter.CTk):
         super().__init__()
 
         # Configure app window
-        self.geometry("720x420")
+        self.geometry("620x420")
         self.resizable(False, False)
         self.title(f"YTM Downloader {APP_VERSION} by Josterand")
         self.appearance_mode = customtkinter.set_appearance_mode("Dark")
@@ -37,7 +37,7 @@ class App(customtkinter.CTk):
         self.download_button.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
 
         # In-App Logging 
-        self.log_box = customtkinter.CTkTextbox(self, state="normal", width=600, height=70, border_width=2.5, activate_scrollbars=False)
+        self.log_box = customtkinter.CTkTextbox(self, state="normal", width=500, height=80, border_width=2.5, activate_scrollbars=False)
         self.log_box.place(relx=0.5, rely=0.8, anchor=tk.CENTER)
         self.log("App started")
 
