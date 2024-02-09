@@ -48,7 +48,7 @@ class App(customtkinter.CTk):
 
     def log(self, text:str):
         all_log = self.log_box.get("0.0", "end")
-        log = str("[INFO] " + text + "\n" + all_log)
+        log = str("[LOG-INFO] " + text + "\n" + all_log)
         self.log_box.delete("0.0", "end")
         self.log_box.insert("0.0", log)
     
