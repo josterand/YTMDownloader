@@ -1,9 +1,13 @@
 import tkinter as tk
 import customtkinter
 from pytube import YouTube
+from pytube import exceptions
+from urllib import error
 
-APP_VERSION = "v2.0.1"
+APP_VERSION = "v2.1.0"
 APP_ACCENT_COLOR = "#006191" # Blue
+RED_COLORS = ["#FF0000", "#FF5D5D"] # Light & Dark
+GREEN_COLORS = ["#08A300", "#61FF58"] # Light & Dark
 YTM_LINK = "https://music.youtube.com/watch?"
 
 class App(customtkinter.CTk):
@@ -70,19 +74,43 @@ class App(customtkinter.CTk):
                 # Log 
                 self.log("Download success")
                 self.status_label.configure(
-                    text_color=["#08A300", "#61FF58"], # Light & Dark Colors
+                    text_color=GREEN_COLORS,
                     text="Download Success!",
+                )
+            except exceptions.RegexMatchError:
+                self.log("Error occured! (RegexMatchError)")
+                self.status_label.configure(
+                    text_color=RED_COLORS,
+                    text="Invalid link! Download failed!"
+                )
+            except exceptions.AgeRestrictedError:
+                self.log("Error occured! (AgeRestrictedError)")
+                self.status_label.configure(
+                    text_color=RED_COLORS,
+                    text="This link is age resticted! Download failed!"
+                )
+            except exceptions.VideoRegionBlocked:
+                self.log("Error occured! (VideoRegionBlocked)")
+                self.status_label.configure(
+                    text_color=RED_COLORS,
+                    text="This content is region restricted! Download failed!"
+                )
+            except error.URLError:
+                self.log("Error occured! (URLError)")
+                self.status_label.configure(
+                    text_color=RED_COLORS,
+                    text="Try checking your connection! Download failed!"
                 )
             except:
                 self.log("Error occured!")
                 self.status_label.configure(
-                    text_color=["#FF0000", "#FF5D5D"], # Light & Dark Colors
-                    text="Download Failed!"
-                )
+                    text_color=RED_COLORS,
+                    text="Download failed!"
+                ) 
         else:
             self.log("Error! The link given is not a YouTube music link!")
             self.status_label.configure(
-                text_color=["#FF0000", "#FF5D5D"], # Light & Dark Colors
+                text_color=RED_COLORS,
                 text="This link is not a YouTube Music Link"
             )
 

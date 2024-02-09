@@ -17,3 +17,6 @@
 ## Version 2.0.1
 - Fix version naming in `app.title`
 - Fix log strings
+
+## Version 2.1.0
+- Add more specific exception handlings including no network handle
