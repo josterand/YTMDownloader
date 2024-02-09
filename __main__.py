@@ -2,7 +2,8 @@ import tkinter as tk
 import customtkinter
 from pytube import YouTube
 
-APP_ACCENT_COLOR = "#006191"
+APP_VERSION = "v2.0.1"
+APP_ACCENT_COLOR = "#006191" # Blue
 YTM_LINK = "https://music.youtube.com/watch?"
 
 class App(customtkinter.CTk):
@@ -12,7 +13,7 @@ class App(customtkinter.CTk):
         # Configure app window
         self.geometry("720x420")
         self.resizable(False, False)
-        self.title("YT Music Downloader V2 (Alpha) by Josterand")
+        self.title(f"YTM Downloader {APP_VERSION} by Josterand")
         self.appearance_mode = customtkinter.set_appearance_mode("Dark")
         self.default_color_theme = customtkinter.set_default_color_theme("dark-blue")
 
@@ -46,12 +47,12 @@ class App(customtkinter.CTk):
         self.log_box.insert("0.0", log)
     
     def check_link(self, link:str):
-        self.log("Checking the given link...")
+        self.log("Checking the link provided...")
         if YTM_LINK in link:
-            self.log("Link OK")
+            self.log("Link OK!")
             return True
         else:
-            self.log("Link error")
+            self.log("Link error!")
             return False
 
     def download(self):
@@ -59,18 +60,18 @@ class App(customtkinter.CTk):
             try:
                 self.log("Getting music information from YouTube...")
                 link_object = YouTube(self.url_field.get())
-                self.log("Getting streams")
+                self.log("Getting streams...")
                 audio_streams = link_object.streams.filter(only_audio=True)
                 self.log("Getting audio streams...")
                 dl = audio_streams.get_by_itag(audio_streams.get_audio_only().itag)
-                self.log("Downloading music")
+                self.log("Starting download...")
                 dl.download(output_path="./Music/")
 
                 # Log 
                 self.log("Download success")
                 self.status_label.configure(
                     text_color=["#08A300", "#61FF58"], # Light & Dark Colors
-                    text="Downloaded",
+                    text="Download Success!",
                 )
             except:
                 self.log("Error occured!")
@@ -79,10 +80,10 @@ class App(customtkinter.CTk):
                     text="Download Failed!"
                 )
         else:
-            self.log("Error! The given link is not a YouTube link")
+            self.log("Error! The link given is not a YouTube music link!")
             self.status_label.configure(
                 text_color=["#FF0000", "#FF5D5D"], # Light & Dark Colors
-                text="This link is not a Youtube Music Link"
+                text="This link is not a YouTube Music Link"
             )
 
 app = App()

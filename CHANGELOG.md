@@ -13,3 +13,7 @@
 ## Version 2.0.0
 - Full code rewrite. Now the code is class-structured
 - Code fixing & cleaning
+
+## Version 2.0.1
+- Fix version naming in `app.title`
+- Fix log strings
