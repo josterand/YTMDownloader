@@ -4,10 +4,12 @@ from pytube import YouTube
 from pytube import exceptions
 from urllib import error
 
-APP_VERSION = "v2.1.0"
+APP_VERSION = "v3.0.0"
 APP_ACCENT_COLOR = "#006191" # Blue
-RED_COLORS = ["#FF0000", "#FF5D5D"] # Light & Dark
-GREEN_COLORS = ["#08A300", "#61FF58"] # Light & Dark
+
+# Light & Dark Colors
+RED_COLORS = ["#FF0000", "#FF5D5D"]
+GREEN_COLORS = ["#08A300", "#61FF58"]
 YTM_LINK = "https://music.youtube.com/watch?"
 
 class App(customtkinter.CTk):
@@ -64,12 +66,13 @@ class App(customtkinter.CTk):
             try:
                 self.log("Getting music information from YouTube...")
                 link_object = YouTube(self.url_field.get())
+                music_title = link_object.title
                 self.log("Getting streams...")
                 audio_streams = link_object.streams.filter(only_audio=True)
                 self.log("Getting audio streams...")
                 dl = audio_streams.get_by_itag(audio_streams.get_audio_only().itag)
                 self.log("Starting download...")
-                dl.download(output_path="./Music/")
+                dl.download(output_path="./Music/", filename=music_title + ".mp3")
 
                 # Log 
                 self.log("Download success")
