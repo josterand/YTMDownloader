@@ -4,7 +4,7 @@ from pytube import YouTube
 from pytube import exceptions
 from urllib import error
 
-APP_VERSION = "v2.2.0"
+APP_VERSION = "v2.2.2"
 APP_ACCENT_COLOR = "#006191" # Blue
 
 # Light & Dark Colors
@@ -62,7 +62,13 @@ class App(customtkinter.CTk):
             return False
 
     def download(self):
-        if self.check_link(self.url_field.get()):
+        if not self.check_link(self.url_field.get()):
+            self.log("Error! The link given is not a YouTube music link!")
+            self.status_label.configure(
+                text_color=RED_COLORS,
+                text="This link is not a YouTube Music Link"
+            )
+        else:
             try:
                 self.log("Getting music information from YouTube...")
                 link_object = YouTube(self.url_field.get())
@@ -110,12 +116,6 @@ class App(customtkinter.CTk):
                     text_color=RED_COLORS,
                     text="Download failed!"
                 ) 
-        else:
-            self.log("Error! The link given is not a YouTube music link!")
-            self.status_label.configure(
-                text_color=RED_COLORS,
-                text="This link is not a YouTube Music Link"
-            )
 
 app = App()
 app.mainloop() 
