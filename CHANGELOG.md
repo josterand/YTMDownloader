@@ -26,3 +26,6 @@
 
 ## Version 2.2.1
 - Minor string fixing & styling
+
+## Version 2.2.2
+- Code fixing
